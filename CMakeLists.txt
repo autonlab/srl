@@ -15,21 +15,10 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x -fPIC")
 option(BUILD_SHARED     "Build as a shared library."                OFF)
 option(BUILD_SAMPLES    "Build the C++ sample applications."        ON)
 option(BUILD_PYTHON     "Build python library."                     ON)
-option(BUILD_DOCKER     "Builds the docker container (*nix only)"   ON)
 option(INSTALL_SAMPLES  "Install the sample application"            ON)
 
 if (BUILD_PYTHON)
     find_package(PythonInterp 2.7 REQUIRED)
-endif()
-
-if (BUILD_DOCKER)
-    if (NOT UNIX)
-        message(FATAL_ERROR "The docker container can only be built on a *nix platform.")
-    endif()
-    if (NOT BUILD_PYTHON OR NOT BUILD_SAMPLES)
-        message(FATAL_ERROR "The docker container requires the built python module and service. "
-                            "BUILD_PYTHON and BUILD_SAMPLES should be set.")
-    endif()
 endif()
 
 if (UNIX)
