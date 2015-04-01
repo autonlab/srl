@@ -1,4 +1,4 @@
-Service Routing Layer - SRL
+Service Routing Layer (SRL)
 ===========================
 
 Version 1.0.0  
